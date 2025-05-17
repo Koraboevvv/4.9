@@ -4,27 +4,104 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+  <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background-color: #0078D7;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #0078D7;
+        }
+        code {
+            display: block;
+            background: #f9f9f9;
+            border-left: 4px solid #0078D7;
+            padding: 10px;
+            margin: 10px 0;
+            white-space: pre-wrap;
+        }
+    </style>
 </head>
 <body>
-    
+    <header>
+        <h1>JavaScriptdagi xatolar turlari</h1>
+    </header>
+    <div class="container">
+        <h2>1. Syntax Error (Sintaksis xatosi)</h2>
+        <p>Kod JavaScriptning sintaksis qoidalariga mos kelmasa yuzaga keladi.</p>
+        <code>
+let x = ; // Xato: qiymat ko'rsatilmagan
+console.log('Salom); // Xato: yopiluvchi qo'shtirnoq yetishmayapti
+        </code>
 
+        <h2>2. Reference Error (Manba xatosi)</h2>
+        <p>Belgilangan o'zgaruvchi yoki funksiyaga murojaat qilishda ular aniqlanmagan bo'lsa yuzaga keladi.</p>
+        <code>
+console.log(myVar); // Xato: myVar aniqlanmagan
+        </code>
 
+        <h2>3. Type Error (Tur xatosi)</h2>
+        <p>Ma'lumot turlari mos kelmagan operatsiya bajarilganda yuzaga keladi.</p>
+        <code>
+let x = null;
+x.toString(); // Xato: null qiymatida metodni chaqirib bo'lmaydi
+        </code>
 
+        <h2>4. Range Error (Oraliq xatosi)</h2>
+        <p>Qabul qilinadigan oraliqdan tashqaridagi qiymat ishlatilganda yuzaga keladi.</p>
+        <code>
+let arr = new Array(-1); // Xato: massivning o'lchami manfiy bo'lishi mumkin emas
+        </code>
 
+        <h2>5. Eval Error (Eval xatosi)</h2>
+        <p><code>eval</code> funksiyasidan noto'g'ri foydalanilganda yuzaga keladi. Zamonaviy versiyalarda kam uchraydi.</p>
+        <code>
+eval("alert('Salom')"); // Ishlaydi, lekin noto'g'ri qo'llanilganda xatolarga olib kelishi mumkin
+        </code>
 
+        <h2>6. URI Error (URI xatosi)</h2>
+        <p><code>encodeURI</code> yoki <code>decodeURIComponent</code> funksiyalariga noto'g'ri ma'lumot uzatilganda yuzaga keladi.</p>
+        <code>
+decodeURIComponent('%'); // Xato: noto'g'ri URI qismi
+        </code>
 
+        <h2>7. Aggregate Error (Yig'ma xato)</h2>
+        <p>Bir nechta xatolarni guruhlash uchun ishlatiladi, masalan, <code>Promise.all</code> holatida.</p>
+        <code>
+Promise.all([
+  Promise.reject('Xato 1'),
+  Promise.reject('Xato 2')
+]).catch(err => console.log(err)); // AggregateError: bir nechta xatolarni o'z ichiga oladi
+        </code>
 
-
-
-
-
-
-
-
-
-
-
-
-    <script src="./js/app.js"></script>
+        <h2>Xatolarni boshqarish</h2>
+        <p>JavaScriptda xatolarni boshqarish uchun <code>try...catch</code> konstruktsiyasidan foydalaniladi.</p>
+        <code>
+try {
+  let result = x + 10; // ReferenceError
+} catch (error) {
+  console.log('Xato:', error.message);
+}
+        </code>
+    </div>
+<script src="./js/app.js"></script>
 </body>
 </html>
